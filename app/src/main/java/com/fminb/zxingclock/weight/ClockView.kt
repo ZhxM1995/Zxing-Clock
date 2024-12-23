@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.animation.doOnStart
 import com.fminb.zxingclock.R
+import com.fminb.zxingclock.utils.Utils
 import kotlin.math.cos
 import kotlin.math.sin
 
@@ -27,12 +28,12 @@ class ClockView @JvmOverloads constructor(
     private val backgroundBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.mipmap.bg)
     private lateinit var scaledBackgroundBitmap: Bitmap
 
-    private var length: Float = 240f
+    private var length: Float = Utils.dp2px(80f)
 
     private val crossHairPaint = Paint().apply {
         isAntiAlias = true
         style = Paint.Style.STROKE
-        strokeWidth = 3f
+        strokeWidth = Utils.dp2px(1f)
         color = Color.parseColor("#603ED7")
         pathEffect = DashPathEffect(floatArrayOf(10f, 10f), 0f)
     }
@@ -140,25 +141,25 @@ class ClockView @JvmOverloads constructor(
         val secondAngle = (second * 6 + millisecond / 1000.0 * 6) % 360
 
         // Draw the hour
-        paint.strokeWidth = 15f
+        paint.strokeWidth = Utils.dp2px(5f)
         paint.color = Color.parseColor("#8670D4")
         val hourAngle = ((hour * 30 + minute / 60.0 * 30) % 360).toFloat()
         drawHand(canvas, centerX, centerY, radius * 0.43f, hourAngle)
 
         // Draw the minute
-        paint.strokeWidth = 12f
+        paint.strokeWidth = Utils.dp2px(4f)
         paint.color = Color.parseColor("#8670D4")
         val minuteAngle = ((minute * 6 + second / 60.0 * 6) % 360).toFloat()
         drawHand(canvas, centerX, centerY, radius * 0.72f, minuteAngle)
 
         // Draw the second
-        paint.strokeWidth = 3f
+        paint.strokeWidth = Utils.dp2px(1f)
         paint.color = Color.parseColor("#CBBDFD")
         drawHand(canvas, centerX, centerY, radius * 0.85f, secondAngle.toFloat())
     }
 
     private fun drawCenterPoint(canvas: Canvas, centerX: Float, centerY: Float) {
-        canvas.drawCircle(centerX, centerY, 22.5f, centerPointPaint)
+        canvas.drawCircle(centerX, centerY, Utils.dp2px(7.5f), centerPointPaint)
     }
 
     private fun drawHand(canvas: Canvas, cx: Float, cy: Float, length: Float, angle: Float) {

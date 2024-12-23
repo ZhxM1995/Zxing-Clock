@@ -11,9 +11,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
-        android:text=":"
+        android:padding="10dp"
+        android:text="@string/menu_icon_font"
         android:textColor="#242629"
         android:textSize="24sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,8 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:gravity="center_horizontal"
-        android:text="© 2024 Zhenxing Miao. All rights reserved."
-        android:textColor="#666666"
+        android:text="@string/copy_right"
+        android:textColor="#878089"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
