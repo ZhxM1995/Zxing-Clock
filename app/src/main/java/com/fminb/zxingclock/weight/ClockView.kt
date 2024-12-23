@@ -155,7 +155,22 @@ class ClockView @JvmOverloads constructor(
         // Draw the second
         paint.strokeWidth = Utils.dp2px(1f)
         paint.color = Color.parseColor("#CBBDFD")
+
+        // Calculate the shadow angle (10 degrees behind the second hand)
+        val shadowAngle = (secondAngle + 10) % 360
+
+        // Convert shadow angle to radians
+        val shadowRadian = Math.toRadians((shadowAngle - 180))
+
+        // Calculate shadow offset
+        val shadowOffsetX = 6f * cos(shadowRadian)
+        val shadowOffsetY = 6f * sin(shadowRadian)
+
+        // Set shadow layer
+        paint.setShadowLayer(5f, shadowOffsetX.toFloat(), shadowOffsetY.toFloat(), Color.parseColor("#1F0E5C3D"))
+
         drawHand(canvas, centerX, centerY, radius * 0.85f, secondAngle.toFloat())
+        paint.clearShadowLayer() // Clear shadow layer
     }
 
     private fun drawCenterPoint(canvas: Canvas, centerX: Float, centerY: Float) {
