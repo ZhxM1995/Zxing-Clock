@@ -137,24 +137,36 @@ class ClockView @JvmOverloads constructor(
         val second = calendar.get(Calendar.SECOND)
         val millisecond = calendar.get(Calendar.MILLISECOND)
 
-        // Calculate the exact position of the second
-        val secondAngle = (second * 6 + millisecond / 1000.0 * 6) % 360
-
         // Draw the hour
+        drawHourHand(canvas, centerX, centerY, radius, hour, minute)
+
+        // Draw the minute
+        drawMinuteHand(canvas, centerX, centerY, radius, minute, second)
+
+        // Draw the second
+        drawSecondHand(canvas, centerX, centerY, radius, second, millisecond)
+    }
+
+    private fun drawHourHand(canvas: Canvas, centerX: Float, centerY: Float, radius: Float, hour: Int, minute: Int) {
         paint.strokeWidth = Utils.dp2px(5f)
         paint.color = Color.parseColor("#8670D4")
         val hourAngle = ((hour * 30 + minute / 60.0 * 30) % 360).toFloat()
         drawHand(canvas, centerX, centerY, radius * 0.43f, hourAngle)
+    }
 
-        // Draw the minute
+    private fun drawMinuteHand(canvas: Canvas, centerX: Float, centerY: Float, radius: Float, minute: Int, second: Int) {
         paint.strokeWidth = Utils.dp2px(4f)
         paint.color = Color.parseColor("#8670D4")
         val minuteAngle = ((minute * 6 + second / 60.0 * 6) % 360).toFloat()
         drawHand(canvas, centerX, centerY, radius * 0.72f, minuteAngle)
+    }
 
-        // Draw the second
+    private fun drawSecondHand(canvas: Canvas, centerX: Float, centerY: Float, radius: Float, second: Int, millisecond: Int) {
         paint.strokeWidth = Utils.dp2px(1f)
         paint.color = Color.parseColor("#CBBDFD")
+
+        // Calculate the exact position of the second
+        val secondAngle = (second * 6 + millisecond / 1000.0 * 6) % 360
 
         // Calculate the shadow angle (10 degrees behind the second hand)
         val shadowAngle = (secondAngle + 10) % 360
