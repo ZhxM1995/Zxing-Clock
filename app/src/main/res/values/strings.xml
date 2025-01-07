@@ -2,4 +2,6 @@
     <string name="app_name">Zxing Clock</string>
     <string name="copy_right">© 2024 Zhenxing Miao. All rights reserved.</string>
     <string name="menu_icon_font">:</string>
+    <string name="about_content"><![CDATA[<p>In 2020, when I first started my professional journey, my initial learning project was a clock application. Unfortunately, in 2024, I lost the original clock app when I replaced my test device. Inspired by this, I decided to re-implement and optimize the clock application, naming it <b>Zxing Clock</b>.</p><p>The <b>Zxing Clock</b> application was developed out of pure interest and with heartfelt thanks to <b>Wu Hui</b> for their invaluable interaction support.</p><p>You can find the project on GitHub at <a href="https://github.com/ZhxM1995/Zxing-Clock">https://github.com/ZhxM1995/Zxing-Clock</a>. This project is released under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</p><p>If you have any suggestions or feedback, feel free to contact me at <a href="mailto:mzx1217@gmail.com">mzx1217@gmail.com</a>.</p>]]></string>
+    <string name="application_version">V: 1.0.0</string>
 </resources>
